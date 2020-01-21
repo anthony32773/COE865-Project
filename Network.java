@@ -29,6 +29,7 @@ public class Network
         ArrayList <Receiver> recvrList = new ArrayList<Receiver>();
         ArrayList <Forwarder> forwarderList = new ArrayList<Forwarder>();
         Source source;
+        boolean check4 = false;
         try
         {
             Scanner fileReader = new Scanner(configFile);
@@ -36,7 +37,12 @@ public class Network
             {
                 counter++;
                 String data = fileReader.nextLine();
-                if (counter < 8)
+                if (data.equals("END"))
+                {
+                    check4 = true;
+                    continue;
+                }
+                if (check4 == false)
                 {
                     idList.add(Character.getNumericValue(data.charAt(0)));
                     typeList.add(Character.getNumericValue(data.charAt(2)));
